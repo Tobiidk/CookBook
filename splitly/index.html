@@ -8,55 +8,15 @@
     <meta name="theme-color" content="#0a0a0f">
     <title>Splitly — ToolKit</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CookBook/shared.css">
 
     <style>
+        /* Splitly-specific extra tokens */
         :root {
-            --bg-base: #0a0a0f;
-            --bg-surface: #12121a;
-            --bg-elevated: #1a1a25;
-            --bg-hover: #22222f;
-            --bg-glass: rgba(255, 255, 255, 0.03);
-            --bg-glass-hover: rgba(255, 255, 255, 0.06);
-            --border-glass: rgba(255, 255, 255, 0.08);
-            --border-glass-hover: rgba(255, 255, 255, 0.15);
-            --text-primary: #e8e6f0;
-            --text-secondary: #9896a6;
-            --text-muted: #5c5a6b;
-            --accent: #a78bfa;
-            --accent-hover: #c4b5fd;
-            --accent-muted: #6d5cdb;
-            --accent-glow: rgba(167, 139, 250, 0.3);
-            --accent-subtle: rgba(167, 139, 250, 0.1);
-            --gradient-accent: linear-gradient(135deg, #a78bfa 0%, #6d5cdb 100%);
-            --success: #4ade80;
-            --success-subtle: rgba(74, 222, 128, 0.1);
-            --danger: #f87171;
-            --danger-subtle: rgba(248, 113, 113, 0.1);
             --pink: #f472b6;
             --cyan: #22d3ee;
             --amber: #fbbf24;
-            --font-display: 'Space Grotesk', -apple-system, sans-serif;
-            --font-body: 'Inter', -apple-system, sans-serif;
-            --radius-lg: 20px;
-            --radius-md: 14px;
-            --radius-sm: 10px;
-            --shadow-neu: 6px 6px 20px rgba(0, 0, 0, 0.5), -3px -3px 12px rgba(255, 255, 255, 0.02);
-            --shadow-neu-inner: inset 2px 2px 6px rgba(0, 0, 0, 0.4), inset -2px -2px 6px rgba(255, 255, 255, 0.02);
-            --shadow-glow: 0 0 30px rgba(167, 139, 250, 0.12);
-            --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        html, body {
-            background: var(--bg-base);
-            color: var(--text-primary);
-            font-family: var(--font-body);
-            line-height: 1.6;
-            min-height: 100vh;
+            --shadow-neu-inner: inset 3px 3px 8px rgba(0, 0, 0, 0.5), inset -3px -3px 8px rgba(255, 255, 255, 0.025);
         }
 
         /* Header */
@@ -81,50 +41,12 @@
             gap: 0.75rem;
         }
 
-        .logo-group {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .back-home {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 500;
-            padding: 0.3rem 0.7rem;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border-glass);
-            transition: all var(--transition);
-        }
-
-        .back-home:hover {
-            color: var(--text-primary);
-            border-color: var(--border-glass-hover);
-            background: var(--bg-glass-hover);
-        }
-
-        .logo {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: -0.02em;
-        }
-
-        .logo span {
-            background: linear-gradient(135deg, #a78bfa, #f472b6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
         .header-actions {
             display: flex;
             gap: 0.5rem;
         }
 
-        /* Buttons */
+        /* Buttons (bare element selectors used throughout HTML) */
         button {
             background: var(--accent);
             color: var(--bg-base);
@@ -177,54 +99,6 @@
             background: none;
             box-shadow: none;
             color: var(--danger);
-        }
-
-        /* Form Elements */
-        input[type="text"], input[type="number"], input[type="date"], input[type="time"], select {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-glass);
-            color: var(--text-primary);
-            font-family: var(--font-body);
-            font-size: 0.9rem;
-            border-radius: var(--radius-sm);
-            padding: 0.6rem 0.85rem;
-            transition: all var(--transition);
-            box-shadow: var(--shadow-neu-inner);
-            width: 100%;
-        }
-
-        input:focus, select:focus {
-            border-color: var(--accent);
-            outline: none;
-            box-shadow: var(--shadow-neu-inner), 0 0 0 3px var(--accent-subtle);
-        }
-
-        input[type="date"]::-webkit-calendar-picker-indicator,
-        input[type="time"]::-webkit-calendar-picker-indicator {
-            filter: invert(0.7);
-        }
-
-        select {
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239896a6' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 0.75rem center;
-            padding-right: 2rem;
-        }
-
-        label {
-            color: var(--text-secondary);
-            font-weight: 500;
-            font-size: 0.8rem;
-            display: block;
-            margin-bottom: 0.35rem;
-        }
-
-        /* Layout */
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 1.5rem 1rem;
         }
 
         /* Summary Cards */
@@ -597,82 +471,6 @@
             color: var(--danger);
             background: none;
             box-shadow: none;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 3rem 1rem;
-            color: var(--text-muted);
-        }
-
-        .empty-state h3 {
-            font-family: var(--font-display);
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Modal */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(8px);
-            z-index: 200;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-        }
-
-        .modal-overlay.active { display: flex; }
-
-        .modal {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-glass);
-            border-radius: var(--radius-lg);
-            width: 100%;
-            max-width: 440px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-header {
-            padding: 1.25rem 1.5rem;
-            border-bottom: 1px solid var(--border-glass);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .modal-header h2 {
-            font-family: var(--font-display);
-            font-size: 1.2rem;
-            color: var(--text-primary);
-        }
-
-        .modal-close {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 1.4rem;
-            cursor: pointer;
-            box-shadow: none;
-            padding: 0;
-        }
-
-        .modal-close:hover {
-            color: var(--text-primary);
-            background: none;
-            box-shadow: none;
-        }
-
-        .modal-body { padding: 1.5rem; }
-
-        .modal-footer {
-            padding: 1.25rem 1.5rem;
-            border-top: 1px solid var(--border-glass);
-            display: flex;
-            gap: 0.75rem;
-            justify-content: flex-end;
         }
 
         /* Data management */

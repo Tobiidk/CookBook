@@ -8,107 +8,19 @@
     <meta name="theme-color" content="#0a0a0f">
     <title>ToolKit — AI-Powered Tools</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CookBook/shared.css">
 
     <style>
-        :root {
-            --bg-base: #0a0a0f;
-            --bg-surface: #12121a;
-            --bg-elevated: #1a1a25;
-            --bg-glass: rgba(255, 255, 255, 0.03);
-            --bg-glass-hover: rgba(255, 255, 255, 0.06);
-            --border-glass: rgba(255, 255, 255, 0.08);
-            --border-glass-hover: rgba(255, 255, 255, 0.15);
-            --text-primary: #e8e6f0;
-            --text-secondary: #9896a6;
-            --text-muted: #5c5a6b;
-            --accent: #a78bfa;
-            --accent-glow: rgba(167, 139, 250, 0.3);
-            --accent-subtle: rgba(167, 139, 250, 0.1);
-            --gradient-1: linear-gradient(135deg, #a78bfa 0%, #6d5cdb 50%, #4338ca 100%);
-            --gradient-2: linear-gradient(135deg, #f472b6 0%, #a78bfa 100%);
-            --shadow-neu-outer: 8px 8px 24px rgba(0, 0, 0, 0.6), -4px -4px 16px rgba(255, 255, 255, 0.02);
-            --shadow-neu-inner: inset 2px 2px 6px rgba(0, 0, 0, 0.4), inset -2px -2px 6px rgba(255, 255, 255, 0.02);
-            --shadow-glow: 0 0 40px rgba(167, 139, 250, 0.15);
-            --radius-lg: 24px;
-            --radius-md: 16px;
-            --radius-sm: 12px;
-            --font-body: 'Inter', -apple-system, sans-serif;
-            --font-display: 'Space Grotesk', -apple-system, sans-serif;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        html, body {
-            background: var(--bg-base);
-            color: var(--text-primary);
-            font-family: var(--font-body);
-            line-height: 1.6;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* Ambient background orbs */
-        .bg-orbs {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.15;
-            animation: float 20s ease-in-out infinite;
-        }
-
-        .orb-1 {
-            width: 600px; height: 600px;
-            background: #a78bfa;
-            top: -200px; left: -100px;
-            animation-delay: 0s;
-        }
-
-        .orb-2 {
-            width: 500px; height: 500px;
-            background: #f472b6;
-            bottom: -150px; right: -100px;
-            animation-delay: -7s;
-        }
-
-        .orb-3 {
-            width: 400px; height: 400px;
-            background: #6d5cdb;
-            top: 40%; left: 50%;
-            animation-delay: -14s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.05); }
-            66% { transform: translate(-20px, 20px) scale(0.95); }
-        }
-
-        /* Layout */
-        .page-wrapper {
-            position: relative;
-            z-index: 1;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Navigation */
+        /* Navigation — glass bar */
         .nav {
-            padding: 1.5rem 2rem;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: rgba(10, 10, 15, 0.5);
+            backdrop-filter: blur(24px) saturate(1.4);
+            -webkit-backdrop-filter: blur(24px) saturate(1.4);
+            border-bottom: 1px solid var(--border-glass);
         }
 
         .nav-brand {
@@ -129,23 +41,25 @@
 
         .nav-links {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.25rem;
             align-items: center;
         }
 
         .nav-link {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: 500;
-            padding: 0.5rem 1rem;
+            padding: 0.45rem 1rem;
             border-radius: var(--radius-sm);
+            border: 1px solid transparent;
             transition: all 0.3s ease;
         }
 
         .nav-link:hover {
             color: var(--text-primary);
-            background: var(--bg-glass-hover);
+            background: rgba(255,255,255,0.04);
+            border-color: var(--border-glass);
         }
 
         /* Hero */
@@ -156,7 +70,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 2rem 2rem 4rem;
+            padding: 3rem 2rem 4rem;
             max-width: 900px;
             margin: 0 auto;
         }
@@ -165,14 +79,17 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.4rem 1rem;
-            background: var(--accent-subtle);
-            border: 1px solid rgba(167, 139, 250, 0.2);
+            padding: 0.4rem 1.1rem;
+            background: rgba(167, 139, 250, 0.08);
+            border: 1px solid rgba(167, 139, 250, 0.18);
             border-radius: 50px;
             font-size: 0.8rem;
             font-weight: 500;
             color: var(--accent);
             margin-bottom: 2rem;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 2px 12px rgba(167, 139, 250, 0.08), var(--shadow-neu-inset);
         }
 
         .hero-badge .dot {
@@ -180,12 +97,8 @@
             height: 6px;
             background: var(--accent);
             border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-glow);
             animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
         }
 
         .hero h1 {
@@ -205,9 +118,9 @@
         }
 
         .hero-subtitle {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             color: var(--text-secondary);
-            max-width: 560px;
+            max-width: 520px;
             margin-bottom: 3rem;
             line-height: 1.7;
         }
@@ -221,70 +134,98 @@
         }
 
         .section-label {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             color: var(--text-muted);
             margin-bottom: 1.5rem;
         }
 
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 1.5rem;
         }
 
-        /* Tool Card — Neumorphism + Glassmorphism */
+        /* ================================================
+           Tool Card — Deep Neumorphism + Glassmorphism
+           ================================================ */
         .tool-card {
             position: relative;
-            background: var(--bg-glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: var(--bg-card);
+            backdrop-filter: blur(30px) saturate(1.3);
+            -webkit-backdrop-filter: blur(30px) saturate(1.3);
             border: 1px solid var(--border-glass);
-            border-radius: var(--radius-lg);
+            border-radius: var(--radius-xl);
             padding: 2rem;
             text-decoration: none;
             color: inherit;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: var(--shadow-neu-outer);
+            transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: var(--shadow-neu);
             overflow: hidden;
             display: flex;
             flex-direction: column;
             gap: 1rem;
         }
 
+        /* Top-left highlight sheen */
         .tool-card::before {
             content: '';
             position: absolute;
             inset: 0;
-            border-radius: var(--radius-lg);
-            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 50%);
+            border-radius: var(--radius-xl);
+            background: var(--gradient-card);
             pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Inner soft bevel edge */
+        .tool-card::after {
+            content: '';
+            position: absolute;
+            inset: 1px;
+            border-radius: calc(var(--radius-xl) - 1px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            pointer-events: none;
+            z-index: 1;
         }
 
         .tool-card:hover {
             border-color: var(--border-glass-hover);
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-neu-outer), var(--shadow-glow);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-neu), var(--shadow-glow);
         }
 
         .tool-card:hover .tool-icon {
-            box-shadow: 0 0 30px var(--accent-glow);
+            box-shadow: var(--shadow-neu-inset), var(--shadow-glow-sm);
+            border-color: var(--border-glass-mid);
         }
 
+        .tool-card:hover .tool-icon svg {
+            filter: drop-shadow(0 0 6px var(--accent-glow));
+        }
+
+        /* Icon container — deep inset neumorphism */
         .tool-icon {
-            width: 56px;
-            height: 56px;
+            width: 60px;
+            height: 60px;
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
             background: var(--bg-elevated);
             border: 1px solid var(--border-glass);
-            box-shadow: var(--shadow-neu-inner);
-            transition: box-shadow 0.4s ease;
+            box-shadow: var(--shadow-neu-inset);
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tool-icon svg {
+            width: 28px;
+            height: 28px;
+            transition: filter 0.4s ease;
         }
 
         .tool-card-title {
@@ -292,13 +233,17 @@
             font-size: 1.3rem;
             font-weight: 600;
             color: var(--text-primary);
+            position: relative;
+            z-index: 2;
         }
 
         .tool-card-desc {
             color: var(--text-secondary);
             font-size: 0.9rem;
-            line-height: 1.6;
+            line-height: 1.65;
             flex: 1;
+            position: relative;
+            z-index: 2;
         }
 
         .tool-card-footer {
@@ -307,58 +252,42 @@
             justify-content: space-between;
             padding-top: 1rem;
             border-top: 1px solid var(--border-glass);
+            position: relative;
+            z-index: 2;
         }
 
+        /* Status pill — neumorphic inset */
         .tool-status {
-            font-size: 0.75rem;
-            font-weight: 500;
-            padding: 0.25rem 0.75rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.3rem 0.85rem;
             border-radius: 50px;
+            letter-spacing: 0.02em;
         }
 
         .tool-status.live {
-            background: rgba(74, 222, 128, 0.1);
+            background: rgba(74, 222, 128, 0.08);
             color: #4ade80;
-            border: 1px solid rgba(74, 222, 128, 0.2);
-        }
-
-        .tool-status.coming-soon {
-            background: rgba(251, 191, 36, 0.1);
-            color: #fbbf24;
-            border: 1px solid rgba(251, 191, 36, 0.2);
+            border: 1px solid rgba(74, 222, 128, 0.18);
+            box-shadow: inset 1px 1px 4px rgba(0,0,0,0.2), 0 0 8px rgba(74, 222, 128, 0.06);
         }
 
         .tool-arrow {
             color: var(--text-muted);
-            font-size: 1.25rem;
-            transition: all 0.3s ease;
+            font-size: 1.3rem;
+            transition: all 0.35s ease;
         }
 
         .tool-card:hover .tool-arrow {
             color: var(--accent);
-            transform: translateX(4px);
-        }
-
-        /* Coming soon card style */
-        .tool-card.disabled {
-            opacity: 0.6;
-            cursor: default;
-            pointer-events: none;
-        }
-
-        /* Footer */
-        .site-footer {
-            padding: 2rem;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            border-top: 1px solid var(--border-glass);
+            transform: translateX(5px);
+            text-shadow: 0 0 12px var(--accent-glow);
         }
 
         /* Responsive */
         @media (max-width: 640px) {
             .nav { padding: 1rem; }
-            .hero { padding: 1.5rem 1rem 3rem; }
+            .hero { padding: 2rem 1rem 3rem; }
             .tools-section { padding: 0 1rem 4rem; }
             .tools-grid { grid-template-columns: 1fr; }
             .hero-subtitle { font-size: 1rem; }
@@ -397,7 +326,13 @@
             <p class="section-label">Tools</p>
             <div class="tools-grid">
                 <a href="/CookBook/cookbook/" class="tool-card">
-                    <div class="tool-icon">&#127859;</div>
+                    <div class="tool-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#g1)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#a78bfa"/><stop offset="100%" stop-color="#f472b6"/></linearGradient></defs>
+                            <path d="M4 19V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2z"/>
+                            <path d="M8 7h8M8 11h6"/>
+                        </svg>
+                    </div>
                     <div class="tool-card-title">CookBook</div>
                     <p class="tool-card-desc">
                         Your personal recipe collection with cooking mode, ingredient scaling,
@@ -410,7 +345,15 @@
                 </a>
 
                 <a href="/CookBook/splitly/" class="tool-card">
-                    <div class="tool-icon">&#128176;</div>
+                    <div class="tool-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#g2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <defs><linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ade80"/><stop offset="100%" stop-color="#a78bfa"/></linearGradient></defs>
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                            <path d="M16 2s2 2 2 4-2 4-2 4" opacity="0.5"/>
+                            <path d="M8 2s-2 2-2 4 2 4 2 4" opacity="0.5"/>
+                        </svg>
+                    </div>
                     <div class="tool-card-title">Splitly</div>
                     <p class="tool-card-desc">
                         Track who paid for groceries, see running totals per person,

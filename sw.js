@@ -1,7 +1,8 @@
-const CACHE_NAME = 'toolkit-v2';
+const CACHE_NAME = 'toolkit-v3';
 const ASSETS = [
   '/CookBook/',
   '/CookBook/index.html',
+  '/CookBook/shared.css',
   '/CookBook/manifest.json',
   '/CookBook/icon-192.png',
   '/CookBook/icon-512.png',
