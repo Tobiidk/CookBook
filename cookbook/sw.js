@@ -1,16 +1,11 @@
-const CACHE_NAME = 'toolkit-v2';
+const CACHE_NAME = 'cookbook-v2';
 const ASSETS = [
-  '/CookBook/',
-  '/CookBook/index.html',
-  '/CookBook/manifest.json',
-  '/CookBook/icon-192.png',
-  '/CookBook/icon-512.png',
   '/CookBook/cookbook/',
   '/CookBook/cookbook/index.html',
   '/CookBook/cookbook/manifest.json',
-  '/CookBook/splitly/',
-  '/CookBook/splitly/index.html',
-  'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:wght@400;600;700&display=swap'
+  '/CookBook/icon-192.png',
+  '/CookBook/icon-512.png',
+  'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&display=swap'
 ];
 
 self.addEventListener('install', event => {
