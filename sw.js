@@ -1,4 +1,4 @@
-const CACHE_NAME = 'toolkit-v1';
+const CACHE_NAME = 'toolkit-v2';
 const ASSETS = [
   '/CookBook/',
   '/CookBook/index.html',
@@ -8,6 +8,8 @@ const ASSETS = [
   '/CookBook/cookbook/',
   '/CookBook/cookbook/index.html',
   '/CookBook/cookbook/manifest.json',
+  '/CookBook/splitly/',
+  '/CookBook/splitly/index.html',
   'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:wght@400;600;700&display=swap'
 ];
 

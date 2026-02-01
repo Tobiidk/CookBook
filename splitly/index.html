@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0a0a0f">
+    <title>Splitly — ToolKit</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-base: #0a0a0f;
+            --bg-surface: #12121a;
+            --bg-elevated: #1a1a25;
+            --bg-hover: #22222f;
+            --bg-glass: rgba(255, 255, 255, 0.03);
+            --bg-glass-hover: rgba(255, 255, 255, 0.06);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --border-glass-hover: rgba(255, 255, 255, 0.15);
+            --text-primary: #e8e6f0;
+            --text-secondary: #9896a6;
+            --text-muted: #5c5a6b;
+            --accent: #a78bfa;
+            --accent-hover: #c4b5fd;
+            --accent-muted: #6d5cdb;
+            --accent-glow: rgba(167, 139, 250, 0.3);
+            --accent-subtle: rgba(167, 139, 250, 0.1);
+            --gradient-accent: linear-gradient(135deg, #a78bfa 0%, #6d5cdb 100%);
+            --success: #4ade80;
+            --success-subtle: rgba(74, 222, 128, 0.1);
+            --danger: #f87171;
+            --danger-subtle: rgba(248, 113, 113, 0.1);
+            --pink: #f472b6;
+            --cyan: #22d3ee;
+            --amber: #fbbf24;
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --radius-sm: 10px;
+            --shadow-neu: 6px 6px 20px rgba(0, 0, 0, 0.5), -3px -3px 12px rgba(255, 255, 255, 0.02);
+            --shadow-neu-inner: inset 2px 2px 6px rgba(0, 0, 0, 0.4), inset -2px -2px 6px rgba(255, 255, 255, 0.02);
+            --shadow-glow: 0 0 30px rgba(167, 139, 250, 0.12);
+            --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html, body {
+            background: var(--bg-base);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .site-header {
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-glass);
+            padding: 0.75rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .back-home {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.3rem 0.7rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-glass);
+            transition: all var(--transition);
+        }
+
+        .back-home:hover {
+            color: var(--text-primary);
+            border-color: var(--border-glass-hover);
+            background: var(--bg-glass-hover);
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #a78bfa, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        /* Buttons */
+        button {
+            background: var(--accent);
+            color: var(--bg-base);
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.85rem;
+            border: none;
+            border-radius: var(--radius-sm);
+            padding: 0.55rem 1.1rem;
+            cursor: pointer;
+            transition: all var(--transition);
+            box-shadow: var(--shadow-neu);
+        }
+
+        button:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        button.secondary {
+            background: var(--bg-glass);
+            color: var(--text-primary);
+            border: 1px solid var(--border-glass);
+            backdrop-filter: blur(12px);
+        }
+
+        button.secondary:hover {
+            background: var(--bg-glass-hover);
+            border-color: var(--border-glass-hover);
+        }
+
+        button.danger {
+            background: var(--danger);
+        }
+
+        button.small {
+            font-size: 0.75rem;
+            padding: 0.35rem 0.65rem;
+        }
+
+        button.icon-btn {
+            background: none;
+            box-shadow: none;
+            color: var(--text-muted);
+            padding: 0.3rem;
+            font-size: 1.1rem;
+        }
+
+        button.icon-btn:hover {
+            background: none;
+            box-shadow: none;
+            color: var(--danger);
+        }
+
+        /* Form Elements */
+        input[type="text"], input[type="number"], input[type="date"], input[type="time"], select {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glass);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            border-radius: var(--radius-sm);
+            padding: 0.6rem 0.85rem;
+            transition: all var(--transition);
+            box-shadow: var(--shadow-neu-inner);
+            width: 100%;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: var(--shadow-neu-inner), 0 0 0 3px var(--accent-subtle);
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator,
+        input[type="time"]::-webkit-calendar-picker-indicator {
+            filter: invert(0.7);
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239896a6' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            padding-right: 2rem;
+        }
+
+        label {
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.8rem;
+            display: block;
+            margin-bottom: 0.35rem;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem;
+        }
+
+        /* Summary Cards */
+        .summary-section {
+            margin-bottom: 2rem;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .person-summary {
+            background: var(--bg-glass);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem;
+            box-shadow: var(--shadow-neu);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .person-summary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .person-summary .name {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .person-summary .amount {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .person-summary .entry-count {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .person-summary.owes-more {
+            border-color: rgba(74, 222, 128, 0.25);
+        }
+
+        .person-summary.owes-less {
+            border-color: rgba(248, 113, 113, 0.2);
+        }
+
+        .balance-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.15rem 0.5rem;
+            border-radius: 50px;
+            margin-top: 0.4rem;
+        }
+
+        .balance-badge.ahead {
+            background: var(--success-subtle);
+            color: var(--success);
+            border: 1px solid rgba(74, 222, 128, 0.2);
+        }
+
+        .balance-badge.behind {
+            background: var(--danger-subtle);
+            color: var(--danger);
+            border: 1px solid rgba(248, 113, 113, 0.2);
+        }
+
+        .balance-badge.even {
+            background: var(--accent-subtle);
+            color: var(--accent);
+            border: 1px solid rgba(167, 139, 250, 0.2);
+        }
+
+        /* Add Entry Form */
+        .add-section {
+            margin-bottom: 2rem;
+        }
+
+        .add-form {
+            background: var(--bg-glass);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-neu);
+            position: relative;
+        }
+
+        .add-form::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .person-quick-btns {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.75rem;
+        }
+
+        .person-quick-btn {
+            font-size: 0.78rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 50px;
+            background: var(--bg-elevated);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-glass);
+            box-shadow: none;
+        }
+
+        .person-quick-btn:hover {
+            background: var(--accent-subtle);
+            color: var(--accent);
+            border-color: rgba(167, 139, 250, 0.3);
+            box-shadow: none;
+        }
+
+        .person-quick-btn.active {
+            background: var(--accent);
+            color: var(--bg-base);
+            border-color: var(--accent);
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        /* People Manager */
+        .people-manager {
+            margin-bottom: 1rem;
+        }
+
+        .people-manager-row {
+            display: flex;
+            gap: 0.5rem;
+            align-items: flex-end;
+        }
+
+        .people-manager-row input {
+            max-width: 200px;
+        }
+
+        .people-tags {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .people-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.78rem;
+            padding: 0.3rem 0.5rem 0.3rem 0.7rem;
+            border-radius: 50px;
+            background: var(--bg-elevated);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-glass);
+        }
+
+        .people-tag .remove-person {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            padding: 0;
+            cursor: pointer;
+            box-shadow: none;
+            line-height: 1;
+        }
+
+        .people-tag .remove-person:hover {
+            color: var(--danger);
+            background: none;
+            box-shadow: none;
+        }
+
+        /* Filters */
+        .filters-bar {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .filter-btn {
+            font-size: 0.78rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 50px;
+            background: var(--bg-elevated);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-glass);
+            box-shadow: none;
+        }
+
+        .filter-btn:hover {
+            background: var(--bg-glass-hover);
+            border-color: var(--border-glass-hover);
+            color: var(--text-primary);
+            box-shadow: none;
+        }
+
+        .filter-btn.active {
+            background: var(--accent-subtle);
+            color: var(--accent);
+            border-color: rgba(167, 139, 250, 0.3);
+            box-shadow: none;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            min-width: 160px;
+            max-width: 280px;
+        }
+
+        .search-box input {
+            padding-left: 2.2rem;
+            font-size: 0.85rem;
+        }
+
+        .search-box::before {
+            content: "\1F50D";
+            position: absolute;
+            left: 0.7rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+
+        /* Entries List */
+        .entries-section {
+            margin-bottom: 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .entry-count-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .entries-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .entry-card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md);
+            padding: 1rem 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            transition: all var(--transition);
+            box-shadow: var(--shadow-neu);
+        }
+
+        .entry-card:hover {
+            border-color: var(--border-glass-hover);
+        }
+
+        .entry-left {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .entry-who {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        .entry-note {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .entry-date {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-top: 0.15rem;
+        }
+
+        .entry-right {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .entry-amount {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .entry-delete {
+            background: none;
+            box-shadow: none;
+            color: var(--text-muted);
+            padding: 0.25rem;
+            font-size: 1rem;
+            opacity: 0;
+            transition: all 0.2s ease;
+        }
+
+        .entry-card:hover .entry-delete {
+            opacity: 1;
+        }
+
+        .entry-delete:hover {
+            color: var(--danger);
+            background: none;
+            box-shadow: none;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-muted);
+        }
+
+        .empty-state h3 {
+            font-family: var(--font-display);
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal-overlay.active { display: flex; }
+
+        .modal {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 440px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border-glass);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--text-primary);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.4rem;
+            cursor: pointer;
+            box-shadow: none;
+            padding: 0;
+        }
+
+        .modal-close:hover {
+            color: var(--text-primary);
+            background: none;
+            box-shadow: none;
+        }
+
+        .modal-body { padding: 1.5rem; }
+
+        .modal-footer {
+            padding: 1.25rem 1.5rem;
+            border-top: 1px solid var(--border-glass);
+            display: flex;
+            gap: 0.75rem;
+            justify-content: flex-end;
+        }
+
+        /* Data management */
+        .data-section {
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--border-glass);
+            margin-top: 1rem;
+        }
+
+        .data-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .header-inner { flex-wrap: wrap; justify-content: center; text-align: center; }
+            .logo-group { justify-content: center; }
+            .summary-grid { grid-template-columns: 1fr 1fr; }
+            .form-row { grid-template-columns: 1fr 1fr; }
+            .entry-delete { opacity: 1; }
+            .search-box { max-width: 100%; }
+        }
+
+        @media (max-width: 380px) {
+            .summary-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo-group">
+                <a href="/CookBook/" class="back-home">&larr; ToolKit</a>
+                <h1 class="logo">Split<span>ly</span></h1>
+            </div>
+            <div class="header-actions">
+                <button class="secondary" onclick="openManagePeople()">Manage People</button>
+                <button class="secondary" onclick="openDataModal()">Data</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Summary Cards -->
+        <section class="summary-section">
+            <div id="summary-grid" class="summary-grid"></div>
+        </section>
+
+        <!-- Add Entry Form -->
+        <section class="add-section">
+            <div class="add-form">
+                <div id="person-quick-btns" class="person-quick-btns"></div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="entry-amount">Amount</label>
+                        <input type="number" id="entry-amount" placeholder="0.00" step="0.01" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="entry-note">Note (optional)</label>
+                        <input type="text" id="entry-note" placeholder="e.g. Aldi weekly shop">
+                    </div>
+                    <div class="form-group">
+                        <label for="entry-date">Date</label>
+                        <input type="date" id="entry-date">
+                    </div>
+                    <div class="form-group">
+                        <label for="entry-time">Time</label>
+                        <input type="time" id="entry-time">
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button onclick="addEntry()">Add Entry</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filters -->
+        <div class="filters-bar">
+            <button class="filter-btn active" data-period="all" onclick="setPeriod('all')">All</button>
+            <button class="filter-btn" data-period="today" onclick="setPeriod('today')">Today</button>
+            <button class="filter-btn" data-period="week" onclick="setPeriod('week')">This Week</button>
+            <button class="filter-btn" data-period="month" onclick="setPeriod('month')">This Month</button>
+            <button class="filter-btn" data-period="ytd" onclick="setPeriod('ytd')">YTD</button>
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search entries..." oninput="renderEntries()">
+            </div>
+        </div>
+
+        <!-- Entries List -->
+        <section class="entries-section">
+            <div class="section-header">
+                <span class="section-title">Entries</span>
+                <span class="entry-count-label" id="entry-count-label"></span>
+            </div>
+            <div id="entries-list" class="entries-list"></div>
+        </section>
+    </div>
+
+    <!-- Manage People Modal -->
+    <div id="people-modal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Manage People</h2>
+                <button class="modal-close" onclick="closePeopleModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">Add people for quick selection when logging grocery payments.</p>
+                <div class="people-manager-row">
+                    <div class="form-group" style="flex:1">
+                        <label for="new-person-name">Name</label>
+                        <input type="text" id="new-person-name" placeholder="Enter name..." onkeydown="if(event.key==='Enter')addPerson()">
+                    </div>
+                    <button onclick="addPerson()" style="margin-bottom:0; align-self: flex-end;">Add</button>
+                </div>
+                <div id="people-tags" class="people-tags" style="margin-top: 1rem;"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="secondary" onclick="closePeopleModal()">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Modal -->
+    <div id="data-modal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Data Management</h2>
+                <button class="modal-close" onclick="closeDataModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">Export or import your data. All data is stored locally in your browser.</p>
+                <div class="data-actions">
+                    <button onclick="exportData()">Export JSON</button>
+                    <button class="secondary" onclick="document.getElementById('import-file').click()">Import JSON</button>
+                    <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(event)">
+                </div>
+                <div class="data-section">
+                    <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 0.75rem;">Danger zone</p>
+                    <button class="danger small" onclick="clearAllData()">Clear All Data</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="secondary" onclick="closeDataModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirm Modal -->
+    <div id="delete-modal" class="modal-overlay">
+        <div class="modal" style="max-width: 360px;">
+            <div class="modal-header">
+                <h2>Delete Entry?</h2>
+                <button class="modal-close" onclick="closeDeleteModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="color: var(--text-secondary);">This cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="secondary" onclick="closeDeleteModal()">Cancel</button>
+                <button class="danger" onclick="confirmDelete()">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // =====================
+        // DATA
+        // =====================
+        const STORAGE_KEY_ENTRIES = 'splitly_entries';
+        const STORAGE_KEY_PEOPLE = 'splitly_people';
+
+        let entries = [];
+        let people = [];
+        let selectedPerson = null;
+        let currentPeriod = 'all';
+        let deleteTargetId = null;
+
+        function loadData() {
+            try {
+                const storedEntries = localStorage.getItem(STORAGE_KEY_ENTRIES);
+                entries = storedEntries ? JSON.parse(storedEntries) : [];
+
+                const storedPeople = localStorage.getItem(STORAGE_KEY_PEOPLE);
+                people = storedPeople ? JSON.parse(storedPeople) : [];
+            } catch (e) {
+                console.error('Error loading data:', e);
+                entries = [];
+                people = [];
+            }
+        }
+
+        function saveEntries() {
+            localStorage.setItem(STORAGE_KEY_ENTRIES, JSON.stringify(entries));
+        }
+
+        function savePeople() {
+            localStorage.setItem(STORAGE_KEY_PEOPLE, JSON.stringify(people));
+        }
+
+        // =====================
+        // DATE HELPERS
+        // =====================
+        function now() { return new Date(); }
+
+        function startOfDay(d) {
+            const c = new Date(d);
+            c.setHours(0, 0, 0, 0);
+            return c;
+        }
+
+        function startOfWeek(d) {
+            const c = new Date(d);
+            const day = c.getDay();
+            const diff = day === 0 ? 6 : day - 1; // Monday start
+            c.setDate(c.getDate() - diff);
+            c.setHours(0, 0, 0, 0);
+            return c;
+        }
+
+        function startOfMonth(d) {
+            return new Date(d.getFullYear(), d.getMonth(), 1);
+        }
+
+        function startOfYear(d) {
+            return new Date(d.getFullYear(), 0, 1);
+        }
+
+        function filterByPeriod(list, period) {
+            if (period === 'all') return list;
+
+            const n = now();
+            let cutoff;
+            switch (period) {
+                case 'today': cutoff = startOfDay(n); break;
+                case 'week': cutoff = startOfWeek(n); break;
+                case 'month': cutoff = startOfMonth(n); break;
+                case 'ytd': cutoff = startOfYear(n); break;
+                default: return list;
+            }
+
+            return list.filter(e => new Date(e.datetime) >= cutoff);
+        }
+
+        function formatDate(datetime) {
+            const d = new Date(datetime);
+            const today = startOfDay(now());
+            const entryDay = startOfDay(d);
+
+            const time = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            if (entryDay.getTime() === today.getTime()) {
+                return `Today at ${time}`;
+            }
+
+            const yesterday = new Date(today);
+            yesterday.setDate(yesterday.getDate() - 1);
+            if (entryDay.getTime() === yesterday.getTime()) {
+                return `Yesterday at ${time}`;
+            }
+
+            return d.toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' }) + ` at ${time}`;
+        }
+
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat(undefined, {
+                style: 'currency',
+                currency: 'DKK',
+                minimumFractionDigits: 2
+            }).format(amount);
+        }
+
+        // =====================
+        // PEOPLE
+        // =====================
+        function addPerson() {
+            const input = document.getElementById('new-person-name');
+            const name = input.value.trim();
+            if (!name) return;
+            if (people.includes(name)) { input.value = ''; return; }
+
+            people.push(name);
+            savePeople();
+            input.value = '';
+            renderPeopleTags();
+            renderPersonQuickBtns();
+            renderSummary();
+        }
+
+        function removePerson(name) {
+            people = people.filter(p => p !== name);
+            if (selectedPerson === name) selectedPerson = null;
+            savePeople();
+            renderPeopleTags();
+            renderPersonQuickBtns();
+            renderSummary();
+        }
+
+        function selectPerson(name) {
+            selectedPerson = selectedPerson === name ? null : name;
+            renderPersonQuickBtns();
+        }
+
+        function renderPeopleTags() {
+            const container = document.getElementById('people-tags');
+            if (people.length === 0) {
+                container.innerHTML = '<span style="color: var(--text-muted); font-size: 0.82rem;">No people added yet.</span>';
+                return;
+            }
+            container.innerHTML = people.map(p => `
+                <span class="people-tag">
+                    ${escapeHtml(p)}
+                    <button class="remove-person" onclick="removePerson('${escapeHtml(p)}')">&times;</button>
+                </span>
+            `).join('');
+        }
+
+        function renderPersonQuickBtns() {
+            const container = document.getElementById('person-quick-btns');
+            if (people.length === 0) {
+                container.innerHTML = '<span style="color: var(--text-muted); font-size: 0.82rem;">Add people via "Manage People" to quick-select here</span>';
+                return;
+            }
+            container.innerHTML = people.map(p => `
+                <button class="person-quick-btn ${selectedPerson === p ? 'active' : ''}"
+                        onclick="selectPerson('${escapeHtml(p)}')">${escapeHtml(p)}</button>
+            `).join('');
+        }
+
+        // =====================
+        // ENTRIES
+        // =====================
+        function addEntry() {
+            if (!selectedPerson) {
+                alert('Please select who paid.');
+                return;
+            }
+
+            const amountInput = document.getElementById('entry-amount');
+            const amount = parseFloat(amountInput.value);
+            if (!amount || amount <= 0) {
+                alert('Please enter a valid amount.');
+                return;
+            }
+
+            const note = document.getElementById('entry-note').value.trim();
+            const dateVal = document.getElementById('entry-date').value;
+            const timeVal = document.getElementById('entry-time').value;
+
+            let datetime;
+            if (dateVal && timeVal) {
+                datetime = new Date(`${dateVal}T${timeVal}`).toISOString();
+            } else if (dateVal) {
+                const n = now();
+                datetime = new Date(`${dateVal}T${n.getHours().toString().padStart(2,'0')}:${n.getMinutes().toString().padStart(2,'0')}`).toISOString();
+            } else {
+                datetime = now().toISOString();
+            }
+
+            const entry = {
+                id: 'e-' + Date.now() + '-' + Math.random().toString(36).substr(2, 5),
+                person: selectedPerson,
+                amount: amount,
+                note: note,
+                datetime: datetime
+            };
+
+            entries.unshift(entry);
+            saveEntries();
+
+            // Reset form
+            amountInput.value = '';
+            document.getElementById('entry-note').value = '';
+            prefillDateTime();
+
+            renderAll();
+            amountInput.focus();
+        }
+
+        function deleteEntry(id) {
+            deleteTargetId = id;
+            document.getElementById('delete-modal').classList.add('active');
+        }
+
+        function confirmDelete() {
+            if (!deleteTargetId) return;
+            entries = entries.filter(e => e.id !== deleteTargetId);
+            saveEntries();
+            deleteTargetId = null;
+            document.getElementById('delete-modal').classList.remove('active');
+            renderAll();
+        }
+
+        function closeDeleteModal() {
+            document.getElementById('delete-modal').classList.remove('active');
+            deleteTargetId = null;
+        }
+
+        // =====================
+        // RENDERING
+        // =====================
+        function getFilteredEntries() {
+            let filtered = filterByPeriod(entries, currentPeriod);
+
+            const search = document.getElementById('search-input').value.toLowerCase().trim();
+            if (search) {
+                filtered = filtered.filter(e =>
+                    e.person.toLowerCase().includes(search) ||
+                    (e.note && e.note.toLowerCase().includes(search))
+                );
+            }
+
+            // Sort newest first
+            filtered.sort((a, b) => new Date(b.datetime) - new Date(a.datetime));
+            return filtered;
+        }
+
+        function renderSummary() {
+            const container = document.getElementById('summary-grid');
+            const filtered = filterByPeriod(entries, currentPeriod);
+
+            // Compute totals per person
+            const totals = {};
+            people.forEach(p => { totals[p] = { amount: 0, count: 0 }; });
+
+            filtered.forEach(e => {
+                if (!totals[e.person]) totals[e.person] = { amount: 0, count: 0 };
+                totals[e.person].amount += e.amount;
+                totals[e.person].count++;
+            });
+
+            const personNames = Object.keys(totals);
+            if (personNames.length === 0) {
+                container.innerHTML = '';
+                return;
+            }
+
+            const amounts = personNames.map(p => totals[p].amount);
+            const avg = amounts.reduce((a, b) => a + b, 0) / personNames.length;
+
+            container.innerHTML = personNames.map(name => {
+                const t = totals[name];
+                const diff = t.amount - avg;
+                let badgeClass = 'even';
+                let badgeText = 'Even';
+
+                if (Math.abs(diff) > 0.01) {
+                    if (diff > 0) {
+                        badgeClass = 'ahead';
+                        badgeText = `+${formatCurrency(diff)} ahead`;
+                    } else {
+                        badgeClass = 'behind';
+                        badgeText = `${formatCurrency(Math.abs(diff))} behind`;
+                    }
+                }
+
+                const cardClass = diff > 0.01 ? 'owes-more' : diff < -0.01 ? 'owes-less' : '';
+
+                return `
+                    <div class="person-summary ${cardClass}">
+                        <div class="name">${escapeHtml(name)}</div>
+                        <div class="amount">${formatCurrency(t.amount)}</div>
+                        <div class="entry-count">${t.count} entr${t.count === 1 ? 'y' : 'ies'}</div>
+                        <span class="balance-badge ${badgeClass}">${badgeText}</span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderEntries() {
+            const filtered = getFilteredEntries();
+            const container = document.getElementById('entries-list');
+            const countLabel = document.getElementById('entry-count-label');
+
+            const total = filtered.reduce((s, e) => s + e.amount, 0);
+            countLabel.textContent = `${filtered.length} entr${filtered.length === 1 ? 'y' : 'ies'} \u2022 ${formatCurrency(total)}`;
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <h3>No entries yet</h3>
+                        <p>Add your first grocery payment above.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filtered.map(e => `
+                <div class="entry-card">
+                    <div class="entry-left">
+                        <div class="entry-who">${escapeHtml(e.person)}</div>
+                        ${e.note ? `<div class="entry-note">${escapeHtml(e.note)}</div>` : ''}
+                        <div class="entry-date">${formatDate(e.datetime)}</div>
+                    </div>
+                    <div class="entry-right">
+                        <span class="entry-amount">${formatCurrency(e.amount)}</span>
+                        <button class="entry-delete" onclick="event.stopPropagation(); deleteEntry('${e.id}')" title="Delete">&times;</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderAll() {
+            renderSummary();
+            renderEntries();
+        }
+
+        // =====================
+        // PERIOD FILTER
+        // =====================
+        function setPeriod(period) {
+            currentPeriod = period;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.period === period);
+            });
+            renderAll();
+        }
+
+        // =====================
+        // MODALS
+        // =====================
+        function openManagePeople() {
+            renderPeopleTags();
+            document.getElementById('people-modal').classList.add('active');
+            document.getElementById('new-person-name').focus();
+        }
+
+        function closePeopleModal() {
+            document.getElementById('people-modal').classList.remove('active');
+        }
+
+        function openDataModal() {
+            document.getElementById('data-modal').classList.add('active');
+        }
+
+        function closeDataModal() {
+            document.getElementById('data-modal').classList.remove('active');
+        }
+
+        // =====================
+        // DATA MANAGEMENT
+        // =====================
+        function exportData() {
+            const data = JSON.stringify({ entries, people }, null, 2);
+            const blob = new Blob([data], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `splitly_backup_${new Date().toISOString().slice(0, 10)}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function importData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    if (data.entries && Array.isArray(data.entries)) {
+                        if (confirm(`Import ${data.entries.length} entries and ${(data.people || []).length} people? This will replace your current data.`)) {
+                            entries = data.entries;
+                            people = data.people || [];
+                            saveEntries();
+                            savePeople();
+                            selectedPerson = null;
+                            renderAll();
+                            renderPersonQuickBtns();
+                            alert('Import successful!');
+                        }
+                    } else {
+                        alert('Invalid backup file.');
+                    }
+                } catch (err) {
+                    alert('Error reading file.');
+                }
+            };
+            reader.readAsText(file);
+            event.target.value = '';
+        }
+
+        function clearAllData() {
+            if (confirm('Delete ALL entries and people? This cannot be undone.')) {
+                entries = [];
+                people = [];
+                selectedPerson = null;
+                saveEntries();
+                savePeople();
+                renderAll();
+                renderPersonQuickBtns();
+                closeDataModal();
+            }
+        }
+
+        // =====================
+        // UTILITIES
+        // =====================
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text || '';
+            return div.innerHTML;
+        }
+
+        function prefillDateTime() {
+            const n = now();
+            document.getElementById('entry-date').value = n.toISOString().slice(0, 10);
+            document.getElementById('entry-time').value = n.toTimeString().slice(0, 5);
+        }
+
+        // =====================
+        // INIT
+        // =====================
+        document.addEventListener('DOMContentLoaded', function() {
+            loadData();
+            prefillDateTime();
+            renderPersonQuickBtns();
+            renderAll();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closePeopleModal();
+                closeDataModal();
+                closeDeleteModal();
+            }
+        });
+
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) this.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
