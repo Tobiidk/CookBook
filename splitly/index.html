@@ -152,12 +152,27 @@
             margin-top: 0.25rem;
         }
 
-        .person-summary.owes-more {
-            border-color: rgba(74, 222, 128, 0.25);
+        .person-summary.is-ahead {
+            border: 1px solid transparent;
+            background:
+                linear-gradient(var(--bg-glass), var(--bg-glass)) padding-box,
+                linear-gradient(135deg, var(--success), var(--accent), var(--success)) border-box;
+            box-shadow:
+                var(--shadow-neu),
+                0 0 20px rgba(74, 222, 128, 0.15),
+                0 0 40px rgba(167, 139, 250, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
         }
 
-        .person-summary.owes-less {
-            border-color: rgba(248, 113, 113, 0.2);
+        .person-summary.is-ahead::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.2), rgba(167, 139, 250, 0.15), rgba(74, 222, 128, 0.1));
+            filter: blur(8px);
+            z-index: -1;
+            opacity: 0.6;
         }
 
         .balance-badge {
@@ -911,25 +926,28 @@
             }
 
             const amounts = personNames.map(p => totals[p].amount);
-            const avg = amounts.reduce((a, b) => a + b, 0) / personNames.length;
+            const maxAmount = Math.max(...amounts);
+            const minAmount = Math.min(...amounts);
+            const totalDiff = maxAmount - minAmount;
 
             container.innerHTML = personNames.map(name => {
                 const t = totals[name];
-                const diff = t.amount - avg;
+                const isAhead = t.amount === maxAmount && totalDiff > 0.01;
+                const isBehind = t.amount === minAmount && totalDiff > 0.01;
                 let badgeClass = 'even';
                 let badgeText = 'Even';
 
-                if (Math.abs(diff) > 0.01) {
-                    if (diff > 0) {
+                if (totalDiff > 0.01) {
+                    if (isAhead) {
                         badgeClass = 'ahead';
-                        badgeText = `Owed ${formatCurrency(diff)}`;
-                    } else {
+                        badgeText = `Owed ${formatCurrency(totalDiff)}`;
+                    } else if (isBehind) {
                         badgeClass = 'behind';
-                        badgeText = `Owes ${formatCurrency(Math.abs(diff))}`;
+                        badgeText = `Owes ${formatCurrency(totalDiff)}`;
                     }
                 }
 
-                const cardClass = diff > 0.01 ? 'owes-more' : diff < -0.01 ? 'owes-less' : '';
+                const cardClass = isAhead ? 'is-ahead' : '';
 
                 return `
                     <div class="person-summary ${cardClass}">
