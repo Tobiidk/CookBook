@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cookbook-v5';
+const CACHE_NAME = 'cookbook-v6';
 const ASSETS = [
     '/CookBook/cookbook/',
     '/CookBook/cookbook/index.html',
@@ -37,6 +37,9 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
+    // Only handle http/https requests
+    if (!event.request.url.startsWith('http')) return;
+
     event.respondWith(
         caches.match(event.request).then(cached => {
             const fetched = fetch(event.request).then(response => {
