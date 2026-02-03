@@ -1,8 +1,11 @@
-const CACHE_NAME = 'toolkit-v12';
+const CACHE_NAME = 'toolkit-v14';
 const ASSETS = [
+    // Landing
     '/CookBook/',
     '/CookBook/index.html',
     '/CookBook/landing.css',
+    '/CookBook/manifest.json',
+    // Shared CSS
     '/CookBook/shared/css/index.css',
     '/CookBook/shared/css/tokens.css',
     '/CookBook/shared/css/reset.css',
@@ -13,15 +16,23 @@ const ASSETS = [
     '/CookBook/shared/css/components/modal.css',
     '/CookBook/shared/css/components/cards.css',
     '/CookBook/shared/css/components/tags.css',
+    // Shared JS
     '/CookBook/shared/js/utils.js',
     '/CookBook/shared/js/modal.js',
+    // CookBook
+    '/CookBook/cookbook/',
+    '/CookBook/cookbook/index.html',
+    '/CookBook/cookbook/cookbook.css',
+    '/CookBook/cookbook/cookbook.js',
+    // Splitly
     '/CookBook/splitly/',
     '/CookBook/splitly/index.html',
     '/CookBook/splitly/splitly.css',
     '/CookBook/splitly/splitly.js',
-    '/CookBook/manifest.json',
+    // Icons
     '/CookBook/icon-192.png',
     '/CookBook/icon-512.png',
+    // Fonts
     'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap'
 ];
 
