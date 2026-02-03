@@ -922,10 +922,10 @@
                 if (Math.abs(diff) > 0.01) {
                     if (diff > 0) {
                         badgeClass = 'ahead';
-                        badgeText = `+${formatCurrency(diff)} ahead`;
+                        badgeText = `Owed ${formatCurrency(diff)}`;
                     } else {
                         badgeClass = 'behind';
-                        badgeText = `${formatCurrency(Math.abs(diff))} behind`;
+                        badgeText = `Owes ${formatCurrency(Math.abs(diff))}`;
                     }
                 }
 
