@@ -67,7 +67,7 @@
     position: absolute;
     inset: 0;
     border-radius: var(--radius-lg);
-    padding: 1px 1px 3px 1px;
+    padding: 2px;
     background: linear-gradient(
         135deg,
         var(--success),
@@ -78,6 +78,9 @@
     background-size: 300% 300%;
     animation: gradient-shift 4s ease infinite;
     -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;

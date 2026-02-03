@@ -324,7 +324,7 @@ function renderAll() {
 // =====================
 function setPeriod(period) {
     currentPeriod = period;
-    document.querySelectorAll('.filter-btn').forEach(btn => {
+    document.querySelectorAll('[data-period]').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.period === period);
     });
     renderAll();

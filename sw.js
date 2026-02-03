@@ -1,4 +1,4 @@
-const CACHE_NAME = 'toolkit-v7';
+const CACHE_NAME = 'toolkit-v9';
 const ASSETS = [
     '/CookBook/',
     '/CookBook/index.html',
@@ -13,6 +13,12 @@ const ASSETS = [
     '/CookBook/shared/css/components/modal.css',
     '/CookBook/shared/css/components/cards.css',
     '/CookBook/shared/css/components/tags.css',
+    '/CookBook/shared/js/utils.js',
+    '/CookBook/shared/js/modal.js',
+    '/CookBook/splitly/',
+    '/CookBook/splitly/index.html',
+    '/CookBook/splitly/splitly.css',
+    '/CookBook/splitly/splitly.js',
     '/CookBook/manifest.json',
     '/CookBook/icon-192.png',
     '/CookBook/icon-512.png',

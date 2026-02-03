@@ -104,6 +104,7 @@
 }
 
 /* Pill Button (for filters, quick select) */
+.btn.btn-pill,
 .btn-pill {
     font-size: 0.78rem;
     padding: 0.35rem 0.75rem;
@@ -114,6 +115,7 @@
     box-shadow: none;
 }
 
+.btn.btn-pill:hover,
 .btn-pill:hover {
     background: var(--bg-glass-hover);
     border-color: var(--border-glass-hover);
@@ -122,10 +124,12 @@
     transform: none;
 }
 
+.btn.btn-pill.active,
 .btn-pill.active {
     background: var(--accent-subtle);
     color: var(--accent);
     border-color: rgba(167, 139, 250, 0.3);
+    box-shadow: none;
 }
 
 /* Circle Button (for +/- controls) */
