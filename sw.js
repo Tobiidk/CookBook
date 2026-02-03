@@ -1,4 +1,4 @@
-const CACHE_NAME = 'toolkit-v14';
+const CACHE_NAME = 'toolkit-v15';
 const ASSETS = [
     // Landing
     '/CookBook/',

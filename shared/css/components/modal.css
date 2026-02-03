@@ -20,7 +20,7 @@
 }
 
 .modal {
-    background: rgba(16, 16, 24, 0.85);
+    background: rgba(16, 16, 24, 0.95);
     backdrop-filter: blur(40px) saturate(1.5);
     -webkit-backdrop-filter: blur(40px) saturate(1.5);
     border: 1px solid var(--border-glass-mid);
@@ -31,6 +31,25 @@
     overflow-y: auto;
     box-shadow: var(--shadow-neu), 0 30px 80px rgba(0, 0, 0, 0.5);
     position: relative;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-glass-hover) transparent;
+}
+
+.modal::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modal::-webkit-scrollbar-thumb {
+    background: var(--border-glass-hover);
+    border-radius: 4px;
+}
+
+.modal::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
 }
 
 .modal::before {
@@ -60,8 +79,8 @@
     align-items: center;
     position: sticky;
     top: 0;
-    z-index: 1;
-    background: var(--bg-surface);
+    z-index: 2;
+    background: #101018;
     border-radius: var(--radius-xl) var(--radius-xl) 0 0;
 }
 
