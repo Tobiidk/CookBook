@@ -1,0 +1,72 @@
+/* ============================================================
+   ToolKit Design Tokens
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Backgrounds */
+    --bg-base: #0a0a0f;
+    --bg-surface: #101018;
+    --bg-elevated: #16161f;
+    --bg-hover: #1e1e2a;
+    --bg-card: rgba(18, 18, 28, 0.6);
+    --bg-glass: rgba(18, 18, 28, 0.6);
+    --bg-glass-hover: rgba(255, 255, 255, 0.05);
+
+    /* Borders */
+    --border-glass: rgba(255, 255, 255, 0.06);
+    --border-glass-mid: rgba(255, 255, 255, 0.1);
+    --border-glass-hover: rgba(255, 255, 255, 0.16);
+
+    /* Text */
+    --text-primary: #e8e6f0;
+    --text-secondary: #9896a6;
+    --text-muted: #5c5a6b;
+
+    /* Accent */
+    --accent: #a78bfa;
+    --accent-hover: #c4b5fd;
+    --accent-muted: #6d5cdb;
+    --accent-glow: rgba(167, 139, 250, 0.35);
+    --accent-subtle: rgba(167, 139, 250, 0.1);
+
+    /* Semantic Colors */
+    --success: #4ade80;
+    --success-subtle: rgba(74, 222, 128, 0.1);
+    --danger: #f87171;
+    --danger-subtle: rgba(248, 113, 113, 0.1);
+    --warning: #fbbf24;
+    --warning-subtle: rgba(251, 191, 36, 0.1);
+    --info: #22d3ee;
+    --info-subtle: rgba(34, 211, 238, 0.1);
+
+    /* Brand Colors */
+    --pink: #f472b6;
+    --favorite: #f472b6;
+
+    /* Gradients */
+    --gradient-brand: linear-gradient(135deg, #a78bfa 0%, #6d5cdb 50%, #4338ca 100%);
+    --gradient-accent: linear-gradient(135deg, #a78bfa 0%, #6d5cdb 100%);
+    --gradient-pink: linear-gradient(135deg, #f472b6 0%, #a78bfa 100%);
+    --gradient-card: linear-gradient(160deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.01) 40%, transparent 100%);
+
+    /* Shadows */
+    --shadow-neu: 12px 12px 32px rgba(0, 0, 0, 0.7), -6px -6px 20px rgba(255, 255, 255, 0.015);
+    --shadow-neu-inset: inset 3px 3px 8px rgba(0, 0, 0, 0.5), inset -3px -3px 8px rgba(255, 255, 255, 0.025);
+    --shadow-glow: 0 0 50px rgba(167, 139, 250, 0.18), 0 0 100px rgba(167, 139, 250, 0.06);
+    --shadow-glow-sm: 0 0 20px rgba(167, 139, 250, 0.2);
+
+    /* Radii */
+    --radius-xl: 28px;
+    --radius-lg: 22px;
+    --radius-md: 16px;
+    --radius-sm: 10px;
+
+    /* Typography */
+    --font-display: 'Space Grotesk', -apple-system, sans-serif;
+    --font-body: 'Inter', -apple-system, sans-serif;
+
+    /* Motion */
+    --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}

@@ -1,0 +1,190 @@
+/* ============================================================
+   Form Components
+   ============================================================ */
+
+/* Base Input Styles */
+.input,
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+input[type="time"],
+textarea,
+select {
+    background: var(--bg-base);
+    border: 1px solid var(--border-glass);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    border-radius: var(--radius-sm);
+    padding: 0.65rem 0.9rem;
+    transition: all var(--transition);
+    box-shadow: var(--shadow-neu-inset);
+    width: 100%;
+}
+
+.input:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: var(--shadow-neu-inset), 0 0 0 3px var(--accent-subtle), 0 0 20px rgba(167, 139, 250, 0.08);
+}
+
+.input::placeholder,
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-muted);
+}
+
+/* Textarea */
+textarea {
+    min-height: 150px;
+    line-height: 1.5;
+    resize: vertical;
+}
+
+textarea.large {
+    min-height: 200px;
+}
+
+/* Select */
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239896a6' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.85rem center;
+    padding-right: 2.2rem;
+    cursor: pointer;
+}
+
+/* Date/Time Picker Icons */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.7);
+    cursor: pointer;
+}
+
+/* Label */
+label {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.82rem;
+    display: block;
+    margin-bottom: 0.35rem;
+}
+
+/* Form Group */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    margin: 0;
+}
+
+/* Form Row (grid layout) */
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.form-row:last-child {
+    margin-bottom: 0;
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+/* Search Box */
+.search-box {
+    position: relative;
+    flex: 1;
+    min-width: 160px;
+}
+
+.search-box input {
+    padding-left: 2.5rem;
+    width: 100%;
+}
+
+.search-box::before {
+    content: "\1F50D";
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.85rem;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Checkbox/Toggle Switch */
+.toggle-switch-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.toggle-switch-container input {
+    display: none;
+}
+
+.toggle-switch {
+    width: 44px;
+    height: 24px;
+    background: var(--bg-surface);
+    border-radius: 12px;
+    position: relative;
+    transition: background 0.2s ease;
+    border: 1px solid var(--border-glass);
+    box-shadow: var(--shadow-neu-inset);
+    flex-shrink: 0;
+}
+
+.toggle-switch::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: var(--text-muted);
+    border-radius: 50%;
+    top: 2px;
+    left: 3px;
+    transition: all 0.2s ease;
+}
+
+.toggle-switch-container input:checked + .toggle-switch {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.toggle-switch-container input:checked + .toggle-switch::after {
+    left: 21px;
+    background: var(--bg-base);
+}
+
+.toggle-label {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}

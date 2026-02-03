@@ -1,0 +1,326 @@
+/* ============================================================
+   Splitly App Styles
+   ============================================================ */
+
+/* Summary Cards */
+.summary-section {
+    margin-bottom: 2rem;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.person-summary {
+    background: var(--bg-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-neu);
+    position: relative;
+    overflow: hidden;
+}
+
+.person-summary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.person-summary .name {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.person-summary .amount {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.person-summary .entry-count {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+}
+
+/* Animated border for person ahead */
+.person-summary.is-ahead {
+    position: relative;
+    border: none;
+    background: var(--bg-glass);
+    box-shadow: var(--shadow-neu);
+}
+
+.person-summary.is-ahead::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    padding: 1px 1px 3px 1px;
+    background: linear-gradient(
+        135deg,
+        var(--success),
+        var(--accent),
+        var(--success),
+        var(--accent)
+    );
+    background-size: 300% 300%;
+    animation: gradient-shift 4s ease infinite;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.person-summary.is-ahead::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 10%;
+    right: 10%;
+    height: 12px;
+    background: linear-gradient(90deg, var(--success), var(--accent), var(--success));
+    background-size: 200% 100%;
+    animation: gradient-shift 4s ease infinite;
+    filter: blur(12px);
+    opacity: 0.4;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+/* Add Entry Form */
+.add-section {
+    margin-bottom: 2rem;
+}
+
+.add-form {
+    background: var(--bg-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-neu);
+    position: relative;
+}
+
+.add-form::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Person Quick Select Buttons */
+.person-quick-btns {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+}
+
+/* People Manager */
+.people-manager {
+    margin-bottom: 1rem;
+}
+
+.people-manager-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-end;
+}
+
+.people-manager-row input {
+    max-width: 200px;
+}
+
+.people-tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.people-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.78rem;
+    padding: 0.3rem 0.5rem 0.3rem 0.7rem;
+    border-radius: 50px;
+    background: var(--bg-elevated);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-glass);
+}
+
+.people-tag .remove-person {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    padding: 0;
+    cursor: pointer;
+    box-shadow: none;
+    line-height: 1;
+}
+
+.people-tag .remove-person:hover {
+    color: var(--danger);
+    background: none;
+    box-shadow: none;
+    transform: none;
+}
+
+/* Filters Bar */
+.filters-bar {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+/* Entries List */
+.entries-section {
+    margin-bottom: 2rem;
+}
+
+.entries-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.entry-card {
+    background: var(--bg-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: all var(--transition);
+    box-shadow: var(--shadow-neu);
+}
+
+.entry-card:hover {
+    border-color: var(--border-glass-hover);
+}
+
+.entry-left {
+    flex: 1;
+    min-width: 0;
+}
+
+.entry-who {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.entry-note {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.entry-date {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+}
+
+.entry-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+.entry-amount {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.entry-delete {
+    background: none;
+    box-shadow: none;
+    color: var(--text-muted);
+    padding: 0.25rem;
+    font-size: 1rem;
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
+.entry-card:hover .entry-delete {
+    opacity: 1;
+}
+
+.entry-delete:hover {
+    color: var(--danger);
+    background: none;
+    box-shadow: none;
+    transform: none;
+}
+
+/* Entry Count Label */
+.entry-count-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Data Section */
+.data-section {
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border-glass);
+    margin-top: 1rem;
+}
+
+.data-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .summary-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .entry-delete {
+        opacity: 1;
+    }
+
+    .search-box {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 380px) {
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+}

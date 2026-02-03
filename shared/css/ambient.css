@@ -1,0 +1,160 @@
+/* ============================================================
+   Ambient Effects
+   Background orbs, animations, decorative elements
+   ============================================================ */
+
+/* Background Orbs Container */
+.bg-orbs {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* Noise Overlay */
+.bg-orbs::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    mix-blend-mode: overlay;
+}
+
+/* Orb Base Styles */
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    animation: orb-float 25s ease-in-out infinite;
+}
+
+/* Orb Variants */
+.orb-1 {
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    opacity: 0.12;
+    top: -250px;
+    left: -150px;
+}
+
+.orb-2 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--pink) 0%, transparent 70%);
+    opacity: 0.1;
+    bottom: -200px;
+    right: -150px;
+    animation-delay: -8s;
+}
+
+.orb-3 {
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, var(--accent-muted) 0%, transparent 70%);
+    opacity: 0.08;
+    top: 35%;
+    left: 45%;
+    animation-delay: -16s;
+}
+
+/* Animations */
+@keyframes orb-float {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(40px, -40px) scale(1.06);
+    }
+    66% {
+        transform: translate(-25px, 25px) scale(0.94);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        box-shadow: 0 0 8px var(--accent-glow);
+    }
+    50% {
+        opacity: 0.4;
+        box-shadow: 0 0 2px var(--accent-glow);
+    }
+}
+
+@keyframes gradient-shift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animated Gradient Border Effect */
+.animated-border {
+    position: relative;
+    border: none;
+    background: var(--bg-glass);
+}
+
+.animated-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px 1px 3px 1px;
+    background: linear-gradient(
+        135deg,
+        var(--success),
+        var(--accent),
+        var(--success),
+        var(--accent)
+    );
+    background-size: 300% 300%;
+    animation: gradient-shift 4s ease infinite;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.animated-border::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 10%;
+    right: 10%;
+    height: 12px;
+    background: linear-gradient(90deg, var(--success), var(--accent), var(--success));
+    background-size: 200% 100%;
+    animation: gradient-shift 4s ease infinite;
+    filter: blur(12px);
+    opacity: 0.4;
+    border-radius: 50%;
+    z-index: -1;
+}
