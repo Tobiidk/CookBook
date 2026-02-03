@@ -153,26 +153,56 @@
         }
 
         .person-summary.is-ahead {
-            border: 1px solid transparent;
-            background:
-                linear-gradient(var(--bg-glass), var(--bg-glass)) padding-box,
-                linear-gradient(135deg, var(--success), var(--accent), var(--success)) border-box;
-            box-shadow:
-                var(--shadow-neu),
-                0 0 20px rgba(74, 222, 128, 0.15),
-                0 0 40px rgba(167, 139, 250, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            position: relative;
+            border: none;
+            background: var(--bg-glass);
+            box-shadow: var(--shadow-neu);
         }
 
+        /* Animated gradient border - thicker at bottom */
+        .person-summary.is-ahead::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius-lg);
+            padding: 1px 1px 3px 1px; /* thin top/sides, thick bottom */
+            background: linear-gradient(
+                135deg,
+                var(--success),
+                var(--accent),
+                var(--success),
+                var(--accent)
+            );
+            background-size: 300% 300%;
+            animation: gradient-shift 4s ease infinite;
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        /* Soft glow underneath */
         .person-summary.is-ahead::after {
             content: '';
             position: absolute;
-            inset: -1px;
-            border-radius: var(--radius-lg);
-            background: linear-gradient(135deg, rgba(74, 222, 128, 0.2), rgba(167, 139, 250, 0.15), rgba(74, 222, 128, 0.1));
-            filter: blur(8px);
+            bottom: -4px;
+            left: 10%;
+            right: 10%;
+            height: 12px;
+            background: linear-gradient(90deg, var(--success), var(--accent), var(--success));
+            background-size: 200% 100%;
+            animation: gradient-shift 4s ease infinite;
+            filter: blur(12px);
+            opacity: 0.4;
+            border-radius: 50%;
             z-index: -1;
-            opacity: 0.6;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .balance-badge {
