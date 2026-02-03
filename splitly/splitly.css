@@ -68,6 +68,7 @@
     inset: 0;
     border-radius: var(--radius-lg);
     padding: 2px;
+    padding-bottom: 5px;
     background: linear-gradient(
         135deg,
         var(--success),
@@ -269,12 +270,15 @@
 
 .entry-delete {
     background: none;
+    border: none;
     box-shadow: none;
     color: var(--text-muted);
     padding: 0.25rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    cursor: pointer;
     opacity: 0;
     transition: all 0.2s ease;
+    line-height: 1;
 }
 
 .entry-card:hover .entry-delete {

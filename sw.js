@@ -1,4 +1,4 @@
-const CACHE_NAME = 'toolkit-v10';
+const CACHE_NAME = 'toolkit-v12';
 const ASSETS = [
     '/CookBook/',
     '/CookBook/index.html',
